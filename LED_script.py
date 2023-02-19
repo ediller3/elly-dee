@@ -7,7 +7,7 @@ import json
 import key
 import numpy as np
 import urllib.request
-#from google.colab.patches import cv2_imshow
+from wifi_send import save_Dalle
 
 
 # print the original image before pixelation
@@ -82,6 +82,9 @@ resized_img2 = cv2.resize(test_img2, (32,32))
 concat_images = np.concatenate((resized_img1, resized_img2), axis = 1)
 
 output_rgbs = concat_images.tolist()
+
+# this code saves the image to a test image
+save_Dalle(output_rgbs)
 
 data = []
 for i in range(32):

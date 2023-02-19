@@ -27,3 +27,6 @@ def send_to_led(img_b64):
     else:
         print('Error uploading image:', response.text)
 
+def save_Dalle(image):
+    with open("test_image.png", "wb") as f:
+        f.write(image)
