@@ -22,7 +22,7 @@ def printImage(img):
 def printImageGrid(imglst):
     rbg_img = None
     for i, img in enumerate(imglst):
-      plt.subplot(2, 5, i+1)
+      plt.subplot(1, 2, i+1)
       # COLOR_RGB2BGR565
       # COLOR_BGR2RGB
       rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -68,11 +68,7 @@ for url_dict in rawImages['data']:
   # imglst.append(cv2.imdecode(image, cv2.IMREAD_COLOR))
   image = cv2.imdecode(image, cv2.IMREAD_COLOR)
   # here, we would likely send the picture data to the arduino
-  
-  # append the image to a list
-  imglst.append(image)
-  # pixelate the image and append to a list
-  imglst16.append(pixelate(image, 32, 64))
+
   # img_values.append(np.asarray(bytearray(pixelate(image, 32, 32))))
   img_values.append(np.asarray(pixelate(image, 32, 32)))
 
@@ -83,15 +79,16 @@ test_img2 = img_values[1]
 resized_img1 = cv2.resize(test_img1, (32, 32))
 resized_img2 = cv2.resize(test_img2, (32,32))
 
-
 concat_images = np.concatenate((resized_img1, resized_img2), axis = 1)
 
-
-output_image = concat_images.tolist()
+output_rgbs = concat_images.tolist()
 
 data = []
 for i in range(32):
     for j in range(64):
         for k in range(3):
-            data.append(output_image[i][j][k])
-print(data)
+            data.append(output_rgbs[i][j][k])
+#print(data)
+
+printImageGrid(img_values)
+
