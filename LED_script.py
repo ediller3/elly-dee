@@ -78,15 +78,15 @@ def genImages():
 
   concat_images = np.concatenate((resized_img1, resized_img2), axis = 1)
   # If you need to save the image one more time:
-  # cv2.imwrite('concat_img.jpg', concat_images)
+  cv2.imwrite('concat_img.jpg', concat_images)
+  print(concat_images.tolist())
 
   return concat_images
 
 def main():
   # If you need to generate new images uncomment:
-  # gen_images()
+  # genImages()
 
-  # Otherwise use this: 
   img = cv2.imread("concat_img.jpg")
   out_rgbs = img.tolist()
   ser = serial.Serial('/dev/tty.usbmodem2101', 9600)
