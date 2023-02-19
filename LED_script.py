@@ -4,6 +4,7 @@ import numpy
 import cv2
 from matplotlib import pyplot as plt
 import json
+import key
 import numpy as np
 import urllib.request
 #from google.colab.patches import cv2_imshow
@@ -43,7 +44,7 @@ def pixelate(img, w, h):
 
 
 # import the openAI API key
-openai.api_key = "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"
+openai.api_key = key.OPENAI_KEY
 
 # implement the DALL E image generation
 imagePrompt = input("enter a fire idea for a picture: ") # this is where the image prompt will go
